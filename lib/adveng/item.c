@@ -44,4 +44,5 @@ void set_name(item* this, char* name)
 		printf("Error reallocating memory for: %s\n", this->name);
 	}
 	strcpy(name, this->name);
+	printf("Did it error?\n");
 }
