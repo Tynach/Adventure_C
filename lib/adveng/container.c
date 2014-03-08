@@ -5,21 +5,48 @@
 
 #include "container.h"
 
+/*****************************
+ * Private Container Members *
+ *****************************/
+
+// Declarations
+
 struct container_private {
 	container_protected protected;
 	item** contents;
 };
 
+
+/*******************************
+ * Protected Container Methods *
+ *******************************/
+
+// Constructor Helper
+
+void container_values(container* self, container* parent, char* name, char* description)
+{
+	item_values((item*)self, parent, name, description);
+	((container_protected*)(self))->item_count = 0;
+	self->contents = malloc(0);
+}
+
+
+/****************************
+ * Public Container Methods *
+ ****************************/
+
+// Constructor
+
 container* new_container(container* parent, char* name, char* description)
 {
 	container* self = malloc(sizeof(struct container_private));
-
-	assign_values((item*)self, parent, name, description);
-	((container_protected*)(self))->item_count = 0;
-	self->contents = malloc(0);
+	container_values(self, parent, name, description);
 
 	return self;
 }
+
+
+// Operations
 
 void add_item(container* self, item* added)
 {

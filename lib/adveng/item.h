@@ -3,6 +3,12 @@
 
 #include <adveng/item.h>
 
+/**************************
+ * Protected Item Members *
+ **************************/
+
+// Declarations
+
 typedef struct {
 	item_public public;
 	container* parent;
@@ -10,6 +16,11 @@ typedef struct {
 	char* description;
 } item_protected;
 
-void assign_values(item* self, container* parent, char* name, char* description);
+
+// Protected Item Methods
+
+// Constructor Helper
+
+void item_values(item* self, container* parent, char* name, char* description);
 
 #endif

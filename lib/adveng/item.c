@@ -5,18 +5,24 @@
 #include <adveng/container.h>
 #include "container.h"
 
+/************************
+ * Private Item Members *
+ ************************/
+
+// Declarations
+
 struct item_private {
 	item_protected protected;
 };
 
-item* new_item(container* parent, char* name, char* description)
-{
-	item* self = malloc(sizeof(struct item_private));
-	assign_values(self, parent, name, description);
-	return self;
-}
 
-void assign_values(item* self, container* parent, char* name, char* description)
+/**************************
+ * Protected Item Methods *
+ **************************/
+
+// Constructor Helper
+
+void item_values(item* self, container* parent, char* name, char* description)
 {
 	((item_protected*)(self))->parent = parent;
 	if (parent != NULL) {
@@ -30,6 +36,24 @@ void assign_values(item* self, container* parent, char* name, char* description)
 	((item_protected*)(self))->description = malloc(strlen(description) + 1);
 	strcpy(((item_protected*)(self))->description, description);
 }
+
+
+/***********************
+ * Public Item Methods *
+ ***********************/
+
+// Constructor
+
+item* new_item(container* parent, char* name, char* description)
+{
+	item* self = malloc(sizeof(struct item_private));
+	item_values(self, parent, name, description);
+
+	return self;
+}
+
+
+// Getters
 
 char* get_name(item* self)
 {
@@ -45,6 +69,9 @@ char* get_description(item* self)
 	return description;
 }
 
+
+// Setters
+
 void set_name(item* self, char* name)
 {
 	((item_protected*)(self))->name = realloc(((item_protected*)(self))->name, strlen(name) + 1);
@@ -56,6 +83,9 @@ void set_description(item* self, char* description)
 	((item_protected*)(self))->description = realloc(((item_protected*)(self))->description, strlen(description) + 1);
 	strcpy(((item_protected*)(self))->description, description);
 }
+
+
+// Operations
 
 void print_item(item* self)
 {
