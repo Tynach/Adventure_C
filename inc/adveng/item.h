@@ -1,19 +1,20 @@
 #ifndef ADVENG_ITEM_H
 #define ADVENG_ITEM_H
 
-struct container;
+typedef struct item_private item;
+typedef struct container_private container;
 
 typedef struct {
-	struct container* parent;
 } item_public;
 
-typedef struct item_public item;
+item* new_item(container* parent, char* name, char* description);
 
-item* new_item(char* name, char* description);
+char* get_name(item* self);
+char* get_description(item* self);
 
-char* get_name(item* this);
-char* get_description(item* this);
+void set_name(item* self, char* name);
+void set_description(item* self, char* description);
 
-void set_name(item* this, char* name);
+void print_item(item* self);
 
 #endif

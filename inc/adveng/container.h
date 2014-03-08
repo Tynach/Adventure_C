@@ -3,12 +3,13 @@
 
 #include <adveng/item.h>
 
-typedef struct
-{
-	item_public item_members;
-	item* contents;
+typedef struct container_private container;
+
+typedef struct {
 } container_public;
 
-typedef struct container_public container;
+container* new_container(container* parent, char* name, char* description);
+
+void print_container(container* self);
 
 #endif

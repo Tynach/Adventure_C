@@ -1,15 +1,15 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <adveng/item.h>
 #include <adveng/container.h>
 
 int main(int argc, char* argv[])
 {
-	item* lamp = new_item("Lamp", "A bright lamp to light your way.");
-	printf("Name:       \t%s\n", get_name(lamp));
-	printf("Description:\t%s\n\n", get_description(lamp));
-	set_name(lamp, "Mew");
-	printf("Name:       \t%s\n", get_name(lamp));
-	printf("Description:\t%s\n", get_description(lamp));
+	container* room = new_container(NULL, "This Room", "It has a Lamp in it.");
+	item* lamp = new_item(room, "Lamp", "A bright lamp to light your way.");
+	print_item((item*)room);
+	printf("\n");
+	print_item(lamp);
 
 	return 0;
 }
