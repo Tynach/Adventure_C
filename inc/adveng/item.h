@@ -19,6 +19,7 @@ typedef struct container_private container;
 typedef struct {
 } item_public;
 
+
 /****************
  * Item Methods *
  ****************/
@@ -35,6 +36,6 @@ void set_name(item* self, char* name);
 void set_description(item* self, char* description);
 
 // Operations
-void print_item(item* self);
+void print_item(item* self, char extra_newline);
 
 #endif

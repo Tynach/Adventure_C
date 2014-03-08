@@ -8,7 +8,6 @@
  **************************/
 
 // Declarations
-
 typedef struct {
 	item_public public;
 	container* parent;
@@ -17,10 +16,11 @@ typedef struct {
 } item_protected;
 
 
-// Protected Item Methods
+/**************************
+ * Protected Item Methods *
+ **************************/
 
 // Constructor Helper
-
 void item_values(item* self, container* parent, char* name, char* description);
 
 #endif

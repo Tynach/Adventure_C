@@ -87,8 +87,12 @@ void set_description(item* self, char* description)
 
 // Operations
 
-void print_item(item* self)
+void print_item(item* self, char extra_newline)
 {
-	printf("Name:\n\t%s\n", ((item_protected*)(self))->name);
-	printf("Description:\n\t%s\n", ((item_protected*)(self))->description);
+	printf("Name:       \t%s\n", ((item_protected*)(self))->name);
+	printf("Description:\t%s\n", ((item_protected*)(self))->description);
+
+	if (extra_newline) {
+		printf("\n");
+	}
 }

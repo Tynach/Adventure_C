@@ -46,7 +46,20 @@ container* new_container(container* parent, char* name, char* description)
 }
 
 
-// Operations
+// Getters
+
+item* get_item(container* self, unsigned int index)
+{
+	unsigned int item_count = ((container_protected*)(self))->item_count;
+	if (index > item_count - 1) {
+		return self->contents[index];
+	} else {
+		return NULL;
+	}
+}
+
+
+// Setters
 
 void add_item(container* self, item* added)
 {
@@ -55,13 +68,16 @@ void add_item(container* self, item* added)
 	self->contents[item_count - 1] = added;
 }
 
-void print_container(container* self)
+
+// Operations
+
+void print_container(container* self, char extra_newline)
 {
 	int i;
 	unsigned int item_count = ((container_protected*)self)->item_count;
 
-	print_item((item*)self);
-	printf("Contains:\n\t");
+	print_item((item*)self, 0);
+	printf("Contains: \t");
 	for (i = 0; i < item_count; i++) {
 		if (i == item_count - 1) {
 			printf("%s.", ((item_protected*)(self->contents[i]))->name);
@@ -70,4 +86,8 @@ void print_container(container* self)
 		}
 	}
 	printf("\n");
+
+	if (extra_newline) {
+		printf("\n");
+	}
 }

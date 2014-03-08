@@ -20,6 +20,7 @@ typedef struct container_private container;
 typedef struct {
 } container_public;
 
+
 /*********************
  * Container Methods *
  *********************/
@@ -27,8 +28,13 @@ typedef struct {
 // Constructor
 container* new_container(container* parent, char* name, char* description);
 
-// Operations
+// Getters
+item* get_item(container* self, unsigned int index);
+
+// Setters
 void add_item(container* self, item* added);
-void print_container(container* self);
+
+// Operations
+void print_container(container* self, char extra_newline);
 
 #endif
