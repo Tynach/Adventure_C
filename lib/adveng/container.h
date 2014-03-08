@@ -7,6 +7,8 @@
 typedef struct {
 	item_protected item_members;
 	container_public public;
+
+	unsigned int item_count;
 } container_protected;
 
 #endif
